@@ -1,8 +1,5 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-$navbar-color: #3c3e42;
+ @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+ $navbar-color: #3c3e42;
 
 /* universal */
 
@@ -69,6 +66,12 @@ p {
   }
 }
 
+#logout {
+  cursor: default;
+  &:hover {
+    background-color: transparent;
+  }
+}
 /* footer */
 
 footer {
@@ -150,7 +153,6 @@ section.user_info {
   border-radius: 50%;
 }
 /* forms */
-
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
