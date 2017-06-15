@@ -17,10 +17,6 @@
                   <li><a href="#">书法</a></li>
                   <li><a href="#">美食</a></li>
                   <li><a href="#">演讲</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">分离的链接</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">另一个分离的链接</a></li>
               </ul>
           </li>
             </ul>
