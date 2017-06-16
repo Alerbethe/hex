@@ -10,7 +10,7 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+public function run()
     {
         $users = factory(User::class)->times(50)->make();
         User::insert($users->toArray());
@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
         $user->email = 'aufree@estgroupe.com';
         $user->password = bcrypt('password');
         $user->is_admin = true;
+        $user->activated = true;
         $user->save();
     }
 }
