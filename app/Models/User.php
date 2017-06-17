@@ -10,6 +10,8 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+use Auth;
+
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
@@ -35,18 +37,33 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
-public static function boot()
-    {
-        parent::boot();
+     protected $hidden = ['password', 'remember_token'];
 
-        static::creating(function ($user) {
-            $user->activation_token = str_random(30);
-        });
-    }
+     public static function boot()
+     {
+         parent::boot();
+
+         static::creating(function ($user) {
+             $user->activation_token = str_random(30);
+         });
+     }
+
     public function gravatar($size = '100')
     {
         $hash = md5(strtolower(trim($this->attributes['email'])));
         return "http://www.gravatar.com/avatar/$hash?s=$size";
     }
-}
+
+    public function statuses()
+    {
+        return $this->hasMany(Status::class);
+    }
+
+    public function feed()
+    {
+       return $this->statuses()
+                    ->orderBy('created_at', 'desc');
+    }
+    }
+
+  
